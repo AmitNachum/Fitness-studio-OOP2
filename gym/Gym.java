@@ -1,9 +1,6 @@
 package gym;
-import gym.management.ClientRegistry;
-import gym.management.InstructorRegistry;
 import gym.management.Secretary;
 import gym.customers.Person;
-import gym.management.SessionRegistry;
 
 public class Gym {
     private static final Gym gym = new Gym();
@@ -44,10 +41,6 @@ public class Gym {
         return this.secretary;
     }
 
-    public int getGymBalance() {
-        return this.gymBalance;
-    }
-
     public void addToGymBalance(int amount) {
         this.gymBalance += amount;
     }
@@ -59,14 +52,14 @@ public class Gym {
                 "Gym Balance: " + gymBalance + "\n" +
                 "\n" +
                 "Clients Data:" + "\n" +
-                ClientRegistry.getInstance() +
+                this.secretary.getClientRegistry() +
                 "\n" +
                 "Employees Data:" + "\n" +
-                InstructorRegistry.getInstance() +
+                this.secretary.getInstructorRegistry() +
                 secretary + "\n" +
                 "\n" +
                 "Sessions Data:" + "\n" +
-                SessionRegistry.getInstance();
+                this.secretary.getSessionRegistry();
 
     }
 }

@@ -36,10 +36,11 @@ public class RegisterClientToSession {
         if (!Gym.getInstance().getSecretary().getKey().equals(key))
             throw new SecurityException("Unmatched key.\nAccess denied.");
 
-        if (isClientRegisteredToSession(c1, s1)) {
+        if (isClientRegisteredToSession(c1, s1))
             throw new DuplicateClientException("Error: The client is already registered for this lesson");
-        }
-        if (!ClientRegistry.getInstance().isClientRegistered(c1 , key))
+
+
+        if (!Gym.getInstance().getSecretary().getClientRegistry().isRegistered(c1 , key))
             throw new ClientNotRegisteredException("Error: The client is not registered with the gym and cannot enroll in lessons");
 
         if (s1.hasPast())

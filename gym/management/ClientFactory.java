@@ -12,7 +12,7 @@ public class ClientFactory {
         if (!person.isAboveEightTeen()) {
             throw new InvalidAgeException("Error: Client must be at least 18 years old to register");
         }
-        if (ClientRegistry.getInstance().isClientRegistered(person , Gym.getInstance().getSecretary().getKey())) {
+        if (Gym.getInstance().getSecretary().getClientRegistry().getRegistered(Gym.getInstance().getSecretary().getKey()).stream().anyMatch(client -> client.getPerson().equals(person))) {
             throw new DuplicateClientException("Error: The client is already registered");
         }
 

@@ -2,11 +2,12 @@ package gym.management.Sessions;
 import gym.Gym;
 import gym.management.Instructor;
 import gym.management.RegisterClientToSession;
+import gym.management.Registrable;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
-public class Session {
+public class Session implements Registrable {
     private static int sessionIdCounter = 1;
     private int sessionId;
     private final SessionType sessionType;
@@ -23,7 +24,8 @@ public class Session {
         this.instructor = instructor;
     }
 
-    public int getSessionId() {
+    @Override
+    public int getId() {
         return this.sessionId;
     }
 
